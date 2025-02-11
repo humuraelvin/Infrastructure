@@ -3,4 +3,84 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+    <display-name>Online Submission System</display-name>
+
+    <!-- Authentication Filter -->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>rw.ac.rca.submission.onlinesubmission.filters.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/teacher/*</url-pattern>
+        <url-pattern>/student/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Auth Controller -->
+    <servlet>
+        <servlet-name>AuthController</servlet-name>
+        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.AuthController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthController</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+
+    <!-- Teacher Controller -->
+    <servlet>
+        <servlet-name>TeacherController</servlet-name>
+        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.TeacherController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TeacherController</servlet-name>
+        <url-pattern>/teacher/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Student Controller -->
+    <servlet>
+        <servlet-name>StudentController</servlet-name>
+        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.StudentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentController</servlet-name>
+        <url-pattern>/student/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- File Upload Servlet -->
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.FileUploadServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>10485760</max-file-size> <!-- 10MB -->
+            <max-request-size>20971520</max-request-size> <!-- 20MB -->
+            <file-size-threshold>5242880</file-size-threshold> <!-- 5MB -->
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+    <!-- Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>views/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>views/error/500.jsp</location>
+    </error-page>
+
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+
 </web-app>
