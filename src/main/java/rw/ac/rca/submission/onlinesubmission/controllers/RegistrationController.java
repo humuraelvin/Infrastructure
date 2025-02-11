@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import rw.ac.rca.submission.onlinesubmission.services.StudentService;
 import rw.ac.rca.submission.onlinesubmission.services.TeacherService;
+import rw.ac.rca.submission.onlinesubmission.services.UserService;
 
 import java.io.IOException;
 
@@ -62,6 +63,11 @@ public class RegistrationController extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("confirmPassword");
+
+        if (!password.equals(confirmPassword)) {
+            throw new IllegalArgumentException("Passwords do not match");
+        }
         String registrationNumber = request.getParameter("registrationNumber");
 
         studentService.registerStudent(firstName, lastName, email, password, registrationNumber);
@@ -78,5 +84,17 @@ public class RegistrationController extends HttpServlet {
 
         teacherService.registerTeacher(firstName, lastName, email, password, department);
         response.sendRedirect(request.getContextPath() + "/login?success=Registration successful");
+    }
+}
+
+// Add to RegistrationController.java
+@WebServlet("/check-email")
+public class EmailCheckServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String email = request.getParameter("email");
+        boolean exists = new UserService().isEmailTaken(email);
+
+        response.setContentType("application/json");
+        response.getWriter().write("{\"exists\":" + exists + "}");
     }
 }
