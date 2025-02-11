@@ -68,6 +68,9 @@ public class RegistrationController extends HttpServlet {
         if (!password.equals(confirmPassword)) {
             throw new IllegalArgumentException("Passwords do not match");
         }
+        if (password.length() < 8) {
+            throw new IllegalArgumentException("Password must be at least 8 characters!");
+        }
         String registrationNumber = request.getParameter("registrationNumber");
 
         studentService.registerStudent(firstName, lastName, email, password, registrationNumber);
@@ -87,14 +90,3 @@ public class RegistrationController extends HttpServlet {
     }
 }
 
-// Add to RegistrationController.java
-@WebServlet("/check-email")
-public class EmailCheckServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String email = request.getParameter("email");
-        boolean exists = new UserService().isEmailTaken(email);
-
-        response.setContentType("application/json");
-        response.getWriter().write("{\"exists\":" + exists + "}");
-    }
-}

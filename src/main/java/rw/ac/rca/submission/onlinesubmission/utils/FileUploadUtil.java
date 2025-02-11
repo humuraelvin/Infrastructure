@@ -81,4 +81,13 @@ public class FileUploadUtil {
             e.printStackTrace();
         }
     }
+
+    public static boolean isValidFileType(Part part, String allowedTypes) {
+        String contentType = part.getContentType();
+        String fileExtension = part.getSubmittedFileName()
+                .substring(part.getSubmittedFileName().lastIndexOf(".") + 1);
+
+        return allowedTypes.toLowerCase().contains(fileExtension.toLowerCase());
+    }
+
 }

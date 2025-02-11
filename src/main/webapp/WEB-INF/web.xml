@@ -82,5 +82,25 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
+    <!-- Security Constraints -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Protected Resources</web-resource-name>
+            <url-pattern>/student/*</url-pattern>
+            <url-pattern>/teacher/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>STUDENT</role-name>
+            <role-name>TEACHER</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/WEB-INF/views/auth/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/views/auth/login.jsp?error=true</form-error-page>
+        </form-login-config>
+    </login-config>
 
 </web-app>
