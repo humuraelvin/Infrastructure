@@ -49,7 +49,7 @@ public class AssignmentService {
     public List<Assignment> getAssignmentsByTeacher(Long teacherID) {
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             return session.createQuery("FROM Assignment WHERE teacher.id = :teacherID ORDER BY createdAt DESC")
-                    .setParameter("teacherId", teacherID)
+                    .setParameter("teacherID", teacherID)
                     .list();
         }
     }

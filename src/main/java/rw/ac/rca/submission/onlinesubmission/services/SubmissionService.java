@@ -69,7 +69,7 @@ public class SubmissionService {
 
     public Submission getSubmission(Long studentId, Long assignmentId) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.createQuery("FROM Submission s WHERE s.assignment.id =:assignmetId" +
+            return session.createQuery("FROM Submission s WHERE s.assignment.id =:assignmentId" +
                     "ORDER BY s.submissionDate DESC", Submission.class)
                     .setParameter("assignmetId", assignmentId)
                     .setParameter("studentId", studentId)

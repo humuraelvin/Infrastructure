@@ -58,7 +58,7 @@ public class AuthController extends HttpServlet {
                 session.setAttribute("userId", user.getId());
                 session.setAttribute("userRole", user.getRole());
 
-                if ("TEACHER".equals(user.getEmail())){
+                if ("TEACHER".equals(user.getRole())){
                     response.sendRedirect(request.getContextPath() + "/teacher/dashboard");
                 }else {
                     response.sendRedirect(request.getContextPath() + "/student/dashboard");
