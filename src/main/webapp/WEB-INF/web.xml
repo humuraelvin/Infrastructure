@@ -24,7 +24,17 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>
-        <url-pattern>/auth</url-pattern>
+        <url-pattern>/auth/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Email Check Servlet -->
+    <servlet>
+        <servlet-name>EmailCheckServlet</servlet-name>
+        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.EmailCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmailCheckServlet</servlet-name>
+        <url-pattern>/check-email</url-pattern>
     </servlet-mapping>
 
     <!-- Teacher Controller -->
@@ -47,60 +57,24 @@
         <url-pattern>/student/*</url-pattern>
     </servlet-mapping>
 
-    <!-- File Upload Servlet -->
-    <servlet>
-        <servlet-name>FileUploadServlet</servlet-name>
-        <servlet-class>rw.ac.rca.submission.onlinesubmission.controllers.FileUploadServlet</servlet-class>
-        <multipart-config>
-            <max-file-size>10485760</max-file-size> <!-- 10MB -->
-            <max-request-size>20971520</max-request-size> <!-- 20MB -->
-            <file-size-threshold>5242880</file-size-threshold> <!-- 5MB -->
-        </multipart-config>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FileUploadServlet</servlet-name>
-        <url-pattern>/upload</url-pattern>
-    </servlet-mapping>
-
     <!-- Welcome File List -->
-    <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
-    </welcome-file-list>
+<!--    <welcome-file-list>-->
+<!--        <welcome-file>login.jsp</welcome-file>-->
+<!--    </welcome-file-list>-->
 
     <!-- Error Pages -->
-    <error-page>
-        <error-code>404</error-code>
-        <location>views/error/404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>views/error/500.jsp</location>
-    </error-page>
+<!--    <error-page>-->
+<!--        <error-code>404</error-code>-->
+<!--        <location>/views/error/404.jsp</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>/views/error/500.jsp</location>-->
+<!--    </error-page>-->
 
     <!-- Session Configuration -->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
-
-    <!-- Security Constraints -->
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Protected Resources</web-resource-name>
-            <url-pattern>/student/*</url-pattern>
-            <url-pattern>/teacher/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>STUDENT</role-name>
-            <role-name>TEACHER</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <form-login-config>
-            <form-login-page>/WEB-INF/views/auth/login.jsp</form-login-page>
-            <form-error-page>/WEB-INF/views/auth/login.jsp?error=true</form-error-page>
-        </form-login-config>
-    </login-config>
 
 </web-app>

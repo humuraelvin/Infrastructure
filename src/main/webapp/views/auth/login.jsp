@@ -114,7 +114,7 @@
         <%= request.getAttribute("error") %>
     </div>
     <% } %>
-    <form action="auth" method="post">
+    <form action="AuthController" method="post">
         <input type="hidden" name="action" value="login">
         <div class="form-group">
             <label for="email">Email Address</label>

@@ -11,7 +11,7 @@ import rw.ac.rca.submission.onlinesubmission.services.UserService;
 
 import java.io.IOException;
 
-@WebServlet("/register/*")
+//@WebServlet("/register/*")
 public class RegistrationController extends HttpServlet {
     private final StudentService studentService = new StudentService();
     private final TeacherService teacherService = new TeacherService();
@@ -23,11 +23,11 @@ public class RegistrationController extends HttpServlet {
 
         switch (path) {
             case "/student":
-                request.getRequestDispatcher("/WEB-INF/views/registration/student-registration.jsp")
+                request.getRequestDispatcher("/webapp/views/auth/register.php")
                         .forward(request, response);
                 break;
             case "/teacher":
-                request.getRequestDispatcher("/WEB-INF/views/registration/teacher-registration.jsp")
+                request.getRequestDispatcher("/webapp/views/auth/register.php")
                         .forward(request, response);
                 break;
             default:

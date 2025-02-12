@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class FileUploadUtil {
-    private static final String UPLOAD_DIRECTORY = "submission_files";
+    private static final String UPLOAD_DIRECTORY = "uploads";
     private static final List<String> ALLOWED_FILE_TYPES = Arrays.asList(
             "application/pdf",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",

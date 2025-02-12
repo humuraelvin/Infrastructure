@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet("/teacher/*")
+//@WebServlet("/teacher/*")
 public class TeacherController extends HttpServlet {
 
     private final TeacherService teacherService = new TeacherService();

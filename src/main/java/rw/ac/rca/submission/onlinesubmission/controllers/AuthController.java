@@ -11,7 +11,7 @@ import rw.ac.rca.submission.onlinesubmission.services.UserService;
 
 import java.io.IOException;
 
-@WebServlet("/auth/*")
+//@WebServlet("/auth/*")
 public class AuthController extends HttpServlet {
 
     private final UserService userService = new UserService();

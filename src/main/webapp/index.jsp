@@ -98,9 +98,9 @@
     <h1>Online Submission System</h1>
     <p>Efficient assignment management for educators and students</p>
     <div class="cta-container">
-        <a href="login.jsp" class="cta-btn">Student Login</a>
-        <a href="login.jsp" class="cta-btn">Teacher Login</a>
-        <a href="register.jsp" class="cta-btn">Create Account</a>
+        <a href="${pageContext.request.contextPath}/views/auth/login.jsp" class="cta-btn">Student Login</a>
+        <a href="${pageContext.request.contextPath}/views/auth/login.jsp" class="cta-btn">Teacher Login</a>
+        <a href="${pageContext.request.contextPath}/views/auth/register.jsp" class="cta-btn">Create Account</a>
     </div>
 </div>
 

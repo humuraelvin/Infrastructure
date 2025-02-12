@@ -16,7 +16,7 @@ import rw.ac.rca.submission.onlinesubmission.services.SubmissionService;
 
 import java.io.IOException;
 
-@WebServlet("/student/*")
+//@WebServlet("/student/*")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 50,

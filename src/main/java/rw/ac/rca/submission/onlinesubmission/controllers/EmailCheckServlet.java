@@ -8,7 +8,7 @@ import rw.ac.rca.submission.onlinesubmission.services.UserService;
 
 import java.io.IOException;
 
-@WebServlet("/check-email")
+//@WebServlet("/check-email")
 public class EmailCheckServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
